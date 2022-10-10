@@ -57,7 +57,7 @@ begin
   begin
     SQLHourGlass:= True;
     Protocol:= 'mssql';
-    LibraryLocation:= 'D:\Projetos\Cursos\ntwdblib.dll';
+    LibraryLocation:= 'D:\Projetos\Cursos\SQL-CURSO\ntwdblib.dll';
     HostName:= '.\SQLEXPRESS';
     Port:= 1433;
   end;

@@ -16,7 +16,7 @@ object dtmConect: TdtmConect
     User = ''
     Password = ''
     Protocol = 'mssql'
-    LibraryLocation = 'D:\Projetos\Cursos\ntwdblib.dll'
+    LibraryLocation = 'D:\Projetos\Cursos\SQL-CURSO\ntwdblib.dll'
     Left = 408
     Top = 200
   end
