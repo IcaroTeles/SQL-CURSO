@@ -7,7 +7,11 @@ uses system.Classes,
      Vcl.Dialogs,
      Vcl.Controls,
      ZAbstractConnection,
-     ZConnection;
+     ZConnection,
+     ZAbstractRODataset,
+     ZAbstractDataset,
+     ZDataset,
+     System.SysUtils;
 
 type
 TCategoria = class
@@ -23,7 +27,7 @@ f_descricao:string;
 public
 constructor Create (aconexao:TZConnection);
 destructor Destroy; override;
-function Gravar:boolean;
+function Inserir:boolean;
 function Atualizar:boolean;
 function Apagar:boolean;
 function Selecionar (id:integer):boolean;
@@ -38,26 +42,107 @@ implementation
 
 {$region 'cruds'}
 function TCategoria.Apagar: boolean;
+var Qry:TZquery;
 begin
-  showmessage ('apagado');
-  result := true
+    if messagedlg ('apagar o registo: '+#13+#13+
+                   'código: '+inttostr(f_categoriaid)+#13+
+                   'descricao: '+(f_descricao),mtconfirmation,[mbYes, mbNo],0)=mrNo
+    then
+    begin
+      result:=false;
+      abort;
+    end;
+
+
+    try
+    Result:= true;
+    Qry:= Tzquery.Create(nil);
+    Qry.Connection:= conectDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add( ' DELETE FROM categorias ' +
+                 ' WHERE categoriaid=:categoriaid');
+    qry.ParamByName('categoriaid').AsInteger:= f_categoriaid;
+    try
+      Qry.ExecSQL;
+    except
+      result:=false;
+    end;
+  finally
+    if Assigned (Qry) then
+       FreeAndNil (Qry)
+  end;
 end;
 
 function TCategoria.Atualizar: boolean;
+var Qry:TZquery;
 begin
-   showmessage ('atualizado');
-  result := true
+  try
+    Result:= true;
+    Qry:= Tzquery.Create(nil);
+    Qry.Connection:= conectDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add( ' UPDATE categorias ' +
+                 ' SET descricao =:descricao ' +
+                 ' WHERE  categoriaid=:categoriaid ');
+    qry.ParamByName('descricao').AsString:= self.F_descricao;
+    qry.ParamByName('categoriaid').AsInteger:= self.F_categoriaid;
+    try
+      Qry.ExecSQL;
+    except
+      result:=false;
+    end;
+  finally
+    if Assigned (Qry) then
+       FreeAndNil (Qry)
+  end;
 end;
 
-function TCategoria.Gravar: boolean;
+function TCategoria.Inserir: boolean;
+var Qry:TZquery;
 begin
-    showmessage ('gravado');
-  result := true
+  try
+    Result:= true;
+    Qry:= Tzquery.Create(nil);
+    Qry.Connection:= conectDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('Insert into categorias (descricao) values (:descricao)');
+    Qry.ParamByName('descricao').AsString:= self.f_descricao;
+    try
+      Qry.ExecSQL
+    except
+      result:=false;
+    end;
+  finally
+    if Assigned (Qry) then
+       FreeAndNil (Qry)
+  end;
 end;
 
 function TCategoria.Selecionar(id: integer): boolean;
+var Qry:TZquery;
 begin
-   result:= true;
+  try
+    Result:= true;
+    Qry:= Tzquery.Create(nil);
+    Qry.Connection:= conectDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add( 'SELECT categoriaid, ' +
+                 '          descricao ' +
+                 '   FROM   categorias' +
+                 ' WHERE  categoriaid=:categoriaid');
+    Qry.ParamByName('categoriaid').AsInteger:= id;
+    try
+      Qry.Open;
+
+      self.F_categoriaid:=qry.FieldByName('categoriaid').AsInteger;
+      self.F_descricao  :=qry.FieldByName('descricao').Asstring;
+    except
+      result:=false;
+    end;
+  finally
+    if Assigned (Qry) then
+       FreeAndNil (Qry)
+  end;
 end;
 {$endregion}
 

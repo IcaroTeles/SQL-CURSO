@@ -16,7 +16,8 @@ type
     QryListdescricao: TWideStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure btnSalvarClick(Sender: TObject);
+    procedure btnMudarClick(Sender: TObject);
+    procedure GridListDblClick(Sender: TObject);
   private
     { Private declarations }
     oCategoria: TCategoria;
@@ -34,14 +35,6 @@ implementation
 {$R *.dfm}
 
 
-procedure TfrmCadCategoria.btnSalvarClick(Sender: TObject);
-begin
-  oCategoria.codigo:= 100;
-  oCategoria.descricao:= ('teste');
-  showmessage (oCategoria.descricao);
-  inherited;
-end;
-
 procedure TfrmCadCategoria.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
@@ -57,18 +50,45 @@ oCategoria:= TCategoria.Create(dtmConect.ConectDB);
 indiceatual:= 'descricao';
 end;
   {$region 'Override'}
+procedure TfrmCadCategoria.btnMudarClick(Sender: TObject);
+begin
+  if oCategoria.Selecionar(qrylist.FieldByName('categoriaid').AsInteger) then
+  begin
+    edt_codigo.Text:=IntToStr(oCategoria.codigo);
+    edt_descricao.Text:=oCategoria.descricao;
+  end
+  else
+  begin
+      btncancelar.Click;
+      abort;
+  end;
+  inherited;
+end;
+
 function TfrmCadCategoria.excluir: boolean;
 begin
-   result:= ocategoria.Apagar;
+  if oCategoria.Selecionar(qrylist.FieldByName('categoriaid').AsInteger) then
+   result:= oCategoria.Apagar;
 end;
 
 function TfrmCadCategoria.gravar(EstadodoCadastro: TEstadoDoCadastro): boolean;
 begin
+  if (edt_codigo.Text<>EmptyStr) then
+  ocategoria.codigo:= StrToInt(edt_codigo.Text)
+  else
+  ocategoria.codigo:=0;
+  ocategoria.descricao:= edt_descricao.Text;
   if (estadodocadastro=ecNovo) then
-      result:= ocategoria.Gravar
+      result:= ocategoria.Inserir
   else
   if (estadodocadastro=ecAlterar) then
       result:= ocategoria.Atualizar;
 end;
+procedure TfrmCadCategoria.GridListDblClick(Sender: TObject);
+begin
+  inherited;
+
+end;
+
 {$endregion}
 end.

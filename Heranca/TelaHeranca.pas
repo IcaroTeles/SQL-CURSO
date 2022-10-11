@@ -79,6 +79,7 @@ begin
       btnsalvar, btnapagar, dbnavega, pgc_1,true);
       controlarindicetab (pgc_1, 1);
       limparedits;
+      qrylist.Refresh;
     end
     else
     begin
@@ -123,6 +124,7 @@ begin
         controlarindicetab (pgc_1, 0);
         EstadoDoCadastro := ecnada;
         limparedits;
+        qrylist.Refresh;
      end
      else
      begin
