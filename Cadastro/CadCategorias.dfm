@@ -7,9 +7,14 @@ inherited frmCadCategoria: TfrmCadCategoria
   TextHeight = 13
   inherited pgc_1: TPageControl
     Width = 756
+    ActivePage = tabList
     ExplicitWidth = 756
     inherited tabManu: TTabSheet
       ExplicitWidth = 748
+      inherited edt_codigo: TLabeledEdit
+        Width = 46
+        ExplicitWidth = 46
+      end
     end
     inherited tabList: TTabSheet
       ExplicitWidth = 748
@@ -55,6 +60,7 @@ inherited frmCadCategoria: TfrmCadCategoria
     ExplicitWidth = 76
   end
   inherited QryList: TZQuery
+    Left = 476
     object QryListcategoriaID: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'categoriaID'
@@ -65,5 +71,8 @@ inherited frmCadCategoria: TfrmCadCategoria
       FieldName = 'descricao'
       Size = 30
     end
+  end
+  inherited DataList: TDataSource
+    Left = 524
   end
 end

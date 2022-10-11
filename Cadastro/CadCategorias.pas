@@ -8,7 +8,7 @@ uses
   ZAbstractRODataset, ZAbstractDataset,
    ZDataset, Vcl.DBCtrls, Vcl.Grids, cCadCategoria,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask,
-  Vcl.ExtCtrls, Vcl.ComCtrls, uenum, DTMConexão;
+  Vcl.ExtCtrls, Vcl.ComCtrls, uenum, DTMConexão, RxToolEdit;
 
 type
   TfrmCadCategoria = class(TfrmTelaHeranca)

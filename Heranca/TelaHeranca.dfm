@@ -1,6 +1,7 @@
 object frmTelaHeranca: TfrmTelaHeranca
   Left = 0
   Top = 0
+  ActiveControl = pgc_1
   BorderStyle = bsDialog
   Caption = 'Titulo'
   ClientHeight = 397
@@ -23,7 +24,7 @@ object frmTelaHeranca: TfrmTelaHeranca
     Top = 0
     Width = 762
     Height = 356
-    ActivePage = tabList
+    ActivePage = tabManu
     Align = alClient
     TabOrder = 0
     object tabManu: TTabSheet

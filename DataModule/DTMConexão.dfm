@@ -9,6 +9,7 @@ object dtmConect: TdtmConect
     Properties.Strings = (
       'controls_cp=CP_UTF16'
       'AutoEncodeStrings=True')
+    Connected = True
     SQLHourGlass = True
     HostName = '.\SQLEXPRESS'
     Port = 1433

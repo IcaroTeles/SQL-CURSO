@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Enter;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Enter, CadCliente;
 
 type
   TformMenu = class(TForm)
@@ -26,8 +26,9 @@ type
     VENDAPORDATA1: TMenuItem;
     procedure menuFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure PRODUTO1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure PRODUTO1Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
   private
     { Private declarations }
     TeclaEnter: Tmrenter;
@@ -70,6 +71,13 @@ end;
 procedure TformMenu.menuFecharClick(Sender: TObject);
 begin
 close;
+end;
+
+procedure TformMenu.N1Click(Sender: TObject);
+begin
+  frmCadCliente:= TfrmCadCliente.Create (self);
+  frmCadCliente.ShowModal;
+  frmCadCliente.Release;
 end;
 
 procedure TformMenu.PRODUTO1Click(Sender: TObject);

@@ -17,12 +17,13 @@ object formMenu: TformMenu
   PixelsPerInch = 96
   TextHeight = 13
   object menuPrinc: TMainMenu
-    Left = 416
-    Top = 176
+    Left = 400
+    Top = 160
     object CADASTRO1: TMenuItem
       Caption = 'CADASTRO'
       object N1: TMenuItem
         Caption = 'CLIENTE'
+        OnClick = N1Click
       end
       object CATEGORIA1: TMenuItem
         Caption = '-'
