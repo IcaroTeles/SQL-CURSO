@@ -60,6 +60,7 @@ inherited frmCadCategoria: TfrmCadCategoria
     ExplicitWidth = 76
   end
   inherited QryList: TZQuery
+    Connection = dtmConect.ConectDB
     Left = 476
     object QryListcategoriaID: TIntegerField
       DisplayLabel = 'C'#243'digo'

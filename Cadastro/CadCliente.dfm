@@ -56,6 +56,10 @@ inherited frmCadCliente: TfrmCadCliente
       end
       inherited edt_descricao: TLabeledEdit
         MaxLength = 60
+        TabOrder = 2
+      end
+      inherited edt_codigo: TLabeledEdit
+        TabOrder = 0
       end
       object edtendereco: TLabeledEdit
         Left = 19
@@ -66,7 +70,7 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Endere'#231'o'
         MaxLength = 60
-        TabOrder = 2
+        TabOrder = 4
       end
       object edtCidade: TLabeledEdit
         Left = 19
@@ -77,7 +81,7 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Cidade'
         MaxLength = 60
-        TabOrder = 3
+        TabOrder = 6
       end
       object edtemail: TLabeledEdit
         Left = 364
@@ -88,7 +92,7 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Email'
         MaxLength = 100
-        TabOrder = 4
+        TabOrder = 5
       end
       object edtbairro: TLabeledEdit
         Left = 364
@@ -99,7 +103,7 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Bairro'
         MaxLength = 40
-        TabOrder = 5
+        TabOrder = 7
       end
       object edtestado: TLabeledEdit
         Left = 564
@@ -110,7 +114,7 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Estado'
         MaxLength = 2
-        TabOrder = 6
+        TabOrder = 8
       end
       object edtcep: TMaskEdit
         Left = 364
@@ -119,7 +123,7 @@ inherited frmCadCliente: TfrmCadCliente
         Height = 21
         EditMask = '99.999-999;1;_'
         MaxLength = 10
-        TabOrder = 7
+        TabOrder = 1
         Text = '  .   -   '
       end
       object edttelefone: TMaskEdit
@@ -129,7 +133,7 @@ inherited frmCadCliente: TfrmCadCliente
         Height = 21
         EditMask = '(99)99999-9999;1;_'
         MaxLength = 14
-        TabOrder = 8
+        TabOrder = 3
         Text = '(  )     -    '
       end
       object edtdata: TDateEdit
@@ -180,7 +184,6 @@ inherited frmCadCliente: TfrmCadCliente
   end
   inherited QryList: TZQuery
     Connection = dtmConect.ConectDB
-    Active = True
     SQL.Strings = (
       'select'
       'clienteid,'

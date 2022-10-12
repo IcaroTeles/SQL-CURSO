@@ -35,9 +35,9 @@ object frmTelaHeranca: TfrmTelaHeranca
         Top = 104
         Width = 310
         Height = 21
-        EditLabel.Width = 46
+        EditLabel.Width = 126
         EditLabel.Height = 13
-        EditLabel.Caption = 'Descri'#231#227'o'
+        EditLabel.Caption = 'Categoria/Cliente/Produto'
         MaxLength = 30
         TabOrder = 0
       end

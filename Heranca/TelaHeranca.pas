@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Data.DB,
   ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.DBCtrls, Vcl.Buttons,
-  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Mask, DTMConexão, uEnum;
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Mask, DTMConexão, uEnum, rxcurredit,
+  rxtooledit;
 
 type
   TfrmTelaHeranca = class(TForm)
@@ -299,6 +300,36 @@ begin
       begin
         begin
          TLabeledEdit(Components[x]).Text:= EmptyStr;
+        end;
+      end
+      else if (Components[x] is TMemo) then
+      begin
+        begin
+         TMemo(Components[x]).Text:= EmptyStr;
+        end;
+      end
+      else if (Components[x] is TDBLookupComboBox) then
+      begin
+        begin
+         TDBLookupComboBox(Components[x]).KeyValue:= Null;
+        end;
+      end
+      else if (Components[x] is TCurrencyEdit) then
+      begin
+        begin
+         TCurrencyEdit(Components[x]).Value:= 0;
+        end;
+      end
+      else if (Components[x] is TDateEdit) then
+      begin
+        begin
+         TDateEdit(Components[x]).Date:=0;
+        end;
+      end
+      else if (Components[x] is TMaskEdit) then
+      begin
+        begin
+         TMaskEdit(Components[x]).Text:= EmptyStr;
         end;
       end;
     end;

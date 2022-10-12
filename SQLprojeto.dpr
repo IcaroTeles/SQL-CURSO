@@ -10,7 +10,9 @@ uses
   Enter in 'terceiros\Enter.pas',
   cCadCategoria in 'Classes\cCadCategoria.pas',
   CadCliente in 'Cadastro\CadCliente.pas' {frmCadCliente},
-  cCadClientes in 'Classes\cCadClientes.pas';
+  cCadClientes in 'Classes\cCadClientes.pas',
+  CadProduto in 'Cadastro\CadProduto.pas' {frmCadProduto},
+  cCadProduto in 'Classes\cCadProduto.pas';
 
 {$R *.res}
 

@@ -34,6 +34,7 @@ object formMenu: TformMenu
       end
       object N2: TMenuItem
         Caption = 'PRODUTO'
+        OnClick = N2Click
       end
       object FECHAR1: TMenuItem
         Caption = '-'
