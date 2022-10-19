@@ -29,30 +29,6 @@ object frmTelaHeranca: TfrmTelaHeranca
     TabOrder = 0
     object tabManu: TTabSheet
       Caption = 'Manuten'#231#227'o'
-      object edt_descricao: TLabeledEdit
-        Tag = 2
-        Left = 19
-        Top = 104
-        Width = 310
-        Height = 21
-        EditLabel.Width = 126
-        EditLabel.Height = 13
-        EditLabel.Caption = 'Categoria/Cliente/Produto'
-        MaxLength = 30
-        TabOrder = 0
-      end
-      object edt_codigo: TLabeledEdit
-        Tag = 1
-        Left = 19
-        Top = 48
-        Width = 310
-        Height = 21
-        EditLabel.Width = 33
-        EditLabel.Height = 13
-        EditLabel.Caption = 'C'#243'digo'
-        MaxLength = 30
-        TabOrder = 1
-      end
     end
     object tabList: TTabSheet
       Caption = 'Listagem'
@@ -106,6 +82,7 @@ object frmTelaHeranca: TfrmTelaHeranca
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
         OnDblClick = GridListDblClick
+        OnKeyDown = GridListKeyDown
         OnTitleClick = GridListTitleClick
         Columns = <
           item
@@ -355,6 +332,7 @@ object frmTelaHeranca: TfrmTelaHeranca
     OnClick = btnFecharClick
   end
   object QryList: TZQuery
+    Connection = dtmConect.ConectDB
     SQL.Strings = (
       'select categoriaID,'
       #9#9'descricao'

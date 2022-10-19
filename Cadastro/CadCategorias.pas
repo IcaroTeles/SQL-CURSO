@@ -14,6 +14,8 @@ type
   TfrmCadCategoria = class(TfrmTelaHeranca)
     QryListcategoriaID: TIntegerField;
     QryListdescricao: TWideStringField;
+    edt_codigo: TLabeledEdit;
+    edt_descricao: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnMudarClick(Sender: TObject);

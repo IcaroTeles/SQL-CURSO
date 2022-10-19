@@ -12,7 +12,12 @@ uses
   CadCliente in 'Cadastro\CadCliente.pas' {frmCadCliente},
   cCadClientes in 'Classes\cCadClientes.pas',
   CadProduto in 'Cadastro\CadProduto.pas' {frmCadProduto},
-  cCadProduto in 'Classes\cCadProduto.pas';
+  cCadProduto in 'Classes\cCadProduto.pas',
+  ufrmatualizadb in 'DataModule\ufrmatualizadb.pas' {frmatualizadb},
+  DTMvenda in 'DataModule\DTMvenda.pas' {dtmvendas: TDataModule},
+  uProVendas in 'Processo\uProVendas.pas' {frmprovendas},
+  cProVenda in 'Classes\cProVenda.pas',
+  cControleEstoque in 'Classes\cControleEstoque.pas';
 
 {$R *.res}
 
@@ -20,5 +25,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TformMenu, formMenu);
+  Application.CreateForm(Tdtmvendas, dtmvendas);
+  Application.CreateForm(Tfrmprovendas, frmprovendas);
   Application.Run;
 end.

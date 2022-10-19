@@ -4,39 +4,33 @@ inherited frmCadProduto: TfrmCadProduto
   TextHeight = 13
   inherited pgc_1: TPageControl
     inherited tabManu: TTabSheet
-      object lbldescricao: TLabel [0]
+      object lbldescricao: TLabel
         Left = 19
         Top = 141
         Width = 100
         Height = 13
         Caption = 'Descr'#231#227'o do Produto'
       end
-      object Label1: TLabel [1]
+      object Label1: TLabel
         Left = 19
         Top = 269
         Width = 82
         Height = 13
         Caption = 'Pre'#231'o de Compra'
       end
-      object Label2: TLabel [2]
+      object Label2: TLabel
         Left = 162
         Top = 269
         Width = 56
         Height = 13
         Caption = 'Quantidade'
       end
-      object Label3: TLabel [3]
+      object Label3: TLabel
         Left = 368
         Top = 85
         Width = 47
         Height = 13
         Caption = 'Categoria'
-      end
-      inherited edt_descricao: TLabeledEdit
-        TabOrder = 1
-      end
-      inherited edt_codigo: TLabeledEdit
-        TabOrder = 0
       end
       object edtdescricao: TMemo
         Left = 19
@@ -44,24 +38,26 @@ inherited frmCadProduto: TfrmCadProduto
         Width = 726
         Height = 89
         Lines.Strings = (
-          'edtdescricao')
+          '')
         MaxLength = 255
-        TabOrder = 3
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 1
       end
       object edtvalor: TCurrencyEdit
         Left = 19
         Top = 288
         Width = 121
         Height = 21
-        TabOrder = 4
+        TabOrder = 2
       end
       object edtquantidade: TCurrencyEdit
         Left = 162
         Top = 288
         Width = 121
         Height = 21
-        DisplayFormat = ' ,0.00;-,0.00'
-        TabOrder = 5
+        DisplayFormat = '0'
+        TabOrder = 3
       end
       object lkpcategoria: TDBLookupComboBox
         Left = 368
@@ -71,7 +67,30 @@ inherited frmCadProduto: TfrmCadProduto
         KeyField = 'categoriaid'
         ListField = 'descricao'
         ListSource = dtscategoria
-        TabOrder = 2
+        TabOrder = 0
+      end
+      object edt_codigo: TLabeledEdit
+        Left = 19
+        Top = 48
+        Width = 70
+        Height = 21
+        EditLabel.Width = 33
+        EditLabel.Height = 13
+        EditLabel.Caption = 'C'#243'digo'
+        MaxLength = 60
+        ReadOnly = True
+        TabOrder = 4
+      end
+      object edt_descricao: TLabeledEdit
+        Left = 19
+        Top = 104
+        Width = 310
+        Height = 21
+        EditLabel.Width = 27
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Nome'
+        MaxLength = 60
+        TabOrder = 5
       end
     end
     inherited tabList: TTabSheet
@@ -112,7 +131,6 @@ inherited frmCadProduto: TfrmCadProduto
     end
   end
   inherited QryList: TZQuery
-    Connection = dtmConect.ConectDB
     SQL.Strings = (
       'select p.produtoid,'
       #9'   p.nome,'

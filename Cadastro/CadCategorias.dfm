@@ -7,13 +7,31 @@ inherited frmCadCategoria: TfrmCadCategoria
   TextHeight = 13
   inherited pgc_1: TPageControl
     Width = 756
-    ActivePage = tabList
     ExplicitWidth = 756
     inherited tabManu: TTabSheet
       ExplicitWidth = 748
-      inherited edt_codigo: TLabeledEdit
-        Width = 46
-        ExplicitWidth = 46
+      object edt_codigo: TLabeledEdit
+        Left = 19
+        Top = 48
+        Width = 56
+        Height = 21
+        EditLabel.Width = 33
+        EditLabel.Height = 13
+        EditLabel.Caption = 'C'#243'digo'
+        MaxLength = 60
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object edt_descricao: TLabeledEdit
+        Left = 19
+        Top = 96
+        Width = 310
+        Height = 21
+        EditLabel.Width = 46
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Descri'#231#227'o'
+        MaxLength = 60
+        TabOrder = 1
       end
     end
     inherited tabList: TTabSheet
@@ -60,7 +78,6 @@ inherited frmCadCategoria: TfrmCadCategoria
     ExplicitWidth = 76
   end
   inherited QryList: TZQuery
-    Connection = dtmConect.ConectDB
     Left = 476
     object QryListcategoriaID: TIntegerField
       DisplayLabel = 'C'#243'digo'

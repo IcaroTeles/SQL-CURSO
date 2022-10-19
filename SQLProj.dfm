@@ -48,6 +48,7 @@ object formMenu: TformMenu
       Caption = 'MOVIMENTA'#199#195'O'
       object VENDA1: TMenuItem
         Caption = 'VENDA'
+        OnClick = VENDA1Click
       end
     end
     object RELATRIO1: TMenuItem

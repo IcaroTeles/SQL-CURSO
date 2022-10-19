@@ -130,6 +130,21 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Classes\cCadProduto.pas"/>
+        <DCCReference Include="DataModule\ufrmatualizadb.pas">
+            <Form>frmatualizadb</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="DataModule\DTMvenda.pas">
+            <Form>dtmvendas</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Processo\uProVendas.pas">
+            <Form>frmprovendas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Classes\cProVenda.pas"/>
+        <DCCReference Include="Classes\cControleEstoque.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

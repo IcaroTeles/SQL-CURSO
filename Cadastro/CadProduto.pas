@@ -30,11 +30,15 @@ type
     dtscategoria: TDataSource;
     qrycategoriacategoriaid: TIntegerField;
     qrycategoriadescricao: TWideStringField;
+    edt_codigo: TLabeledEdit;
+    edt_descricao: TLabeledEdit;
     procedure btnMudarClick(Sender: TObject);
     procedure btnnovoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure GridListKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     oProduto:TProduto;
@@ -125,6 +129,13 @@ begin
      Result:=oProduto.Inserir
   else if (EstadoDoCadastro=ecAlterar) then
      Result:=oProduto.Atualizar;
+end;
+
+procedure TfrmCadProduto.GridListKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+bloqueiactrldelgrid(key,shift);
 end;
 
 {$endregion}

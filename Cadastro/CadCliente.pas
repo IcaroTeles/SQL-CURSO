@@ -36,9 +36,13 @@ type
     QryListdatanascimento: TDateTimeField;
     QryListclienteid: TIntegerField;
     QryListnome: TWideStringField;
+    edt_codigo: TLabeledEdit;
+    edt_descricao: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnnovoClick(Sender: TObject);
     procedure btnMudarClick(Sender: TObject);
+    procedure edtdataKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
      oCliente:TCliente;
@@ -85,6 +89,13 @@ begin
   inherited;
   edtData.Date:=Date;
   edt_descricao.SetFocus;
+end;
+
+procedure TfrmCadCliente.edtdataKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+bloqueiactrldelgrid(key,shift);
 end;
 
 function TfrmCadCliente.excluir: Boolean;

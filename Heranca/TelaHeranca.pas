@@ -29,8 +29,6 @@ type
     lb_indice: TLabel;
     mskpesquisar: TMaskEdit;
     btnpesq: TBitBtn;
-    edt_descricao: TLabeledEdit;
-    edt_codigo: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnnovoClick(Sender: TObject);
@@ -43,6 +41,8 @@ type
     procedure GridListTitleClick(Column: TColumn);
     procedure mskpesquisarChange(Sender: TObject);
     procedure GridListDblClick(Sender: TObject);
+    procedure GridListKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
 
   private
     procedure ControlarBtn (btnnovo, btnMudar, btncancelar, btnsalvar,
@@ -61,6 +61,7 @@ type
     EstadodoCadastro: TEstadoDoCadastro;
     function excluir:boolean; virtual;
     function gravar (EstadodoCadastro: TEstadoDoCadastro):boolean; virtual;
+    procedure bloqueiactrldelgrid(var key: word; shift: Tshiftstate);
   end;
 
 var
@@ -122,7 +123,7 @@ begin
      begin
         controlarbtn (btnnovo, btnMudar, btncancelar, btnsalvar,
         btnapagar, dbnavega, pgc_1,true);
-        controlarindicetab (pgc_1, 0);
+        controlarindicetab (pgc_1, 1);
         EstadoDoCadastro := ecnada;
         limparedits;
         qrylist.Refresh;
@@ -183,6 +184,12 @@ begin
   btnMudar.Click;
 end;
 
+procedure TfrmTelaHeranca.GridListKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+bloqueiactrldelgrid(key,shift);
+end;
+
 procedure TfrmTelaHeranca.GridListTitleClick(Column: TColumn);
 begin
   IndiceAtual := Column.FieldName;
@@ -206,6 +213,12 @@ begin
   else if (EstadoDoCadastro = ecAlterar) then
     ShowMessage('Gravado');
   Result := True;
+end;
+
+procedure TfrmTelaHeranca.bloqueiactrldelgrid(var key: word; shift: Tshiftstate);
+begin
+   if (shift = [ssctrl]) and (key=46) then
+   key:=0;
 end;
 
 procedure TfrmTelaHeranca.ControlarBtn (btnnovo, btnMudar, btncancelar, btnsalvar,

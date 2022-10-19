@@ -33,33 +33,26 @@ inherited frmCadCliente: TfrmCadCliente
   end
   inherited pgc_1: TPageControl
     inherited tabManu: TTabSheet
-      object Label4: TLabel [0]
-        Left = 364
+      object Label4: TLabel
+        Left = 476
         Top = 87
         Width = 42
         Height = 13
         Caption = 'Telefone'
       end
-      object Label5: TLabel [1]
-        Left = 368
-        Top = 29
+      object Label5: TLabel
+        Left = 364
+        Top = 87
         Width = 19
         Height = 13
         Caption = 'CEP'
       end
-      object Label7: TLabel [2]
+      object Label7: TLabel
         Left = 19
         Top = 235
         Width = 81
         Height = 13
         Caption = 'Data Nascimento'
-      end
-      inherited edt_descricao: TLabeledEdit
-        MaxLength = 60
-        TabOrder = 2
-      end
-      inherited edt_codigo: TLabeledEdit
-        TabOrder = 0
       end
       object edtendereco: TLabeledEdit
         Left = 19
@@ -70,7 +63,7 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Endere'#231'o'
         MaxLength = 60
-        TabOrder = 4
+        TabOrder = 2
       end
       object edtCidade: TLabeledEdit
         Left = 19
@@ -81,7 +74,7 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Cidade'
         MaxLength = 60
-        TabOrder = 6
+        TabOrder = 4
       end
       object edtemail: TLabeledEdit
         Left = 364
@@ -92,7 +85,7 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Email'
         MaxLength = 100
-        TabOrder = 5
+        TabOrder = 3
       end
       object edtbairro: TLabeledEdit
         Left = 364
@@ -103,7 +96,7 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Bairro'
         MaxLength = 40
-        TabOrder = 7
+        TabOrder = 5
       end
       object edtestado: TLabeledEdit
         Left = 564
@@ -114,26 +107,26 @@ inherited frmCadCliente: TfrmCadCliente
         EditLabel.Height = 13
         EditLabel.Caption = 'Estado'
         MaxLength = 2
-        TabOrder = 8
+        TabOrder = 6
       end
       object edtcep: TMaskEdit
         Left = 364
-        Top = 48
+        Top = 106
         Width = 69
         Height = 21
         EditMask = '99.999-999;1;_'
         MaxLength = 10
-        TabOrder = 1
+        TabOrder = 0
         Text = '  .   -   '
       end
       object edttelefone: TMaskEdit
-        Left = 364
+        Left = 476
         Top = 106
         Width = 85
         Height = 21
         EditMask = '(99)99999-9999;1;_'
         MaxLength = 14
-        TabOrder = 3
+        TabOrder = 1
         Text = '(  )     -    '
       end
       object edtdata: TDateEdit
@@ -145,6 +138,30 @@ inherited frmCadCliente: TfrmCadCliente
         DialogTitle = 'Selecione a Data'
         NumGlyphs = 2
         CalendarStyle = csDialog
+        TabOrder = 7
+        OnKeyDown = edtdataKeyDown
+      end
+      object edt_codigo: TLabeledEdit
+        Left = 19
+        Top = 48
+        Width = 46
+        Height = 21
+        EditLabel.Width = 33
+        EditLabel.Height = 13
+        EditLabel.Caption = 'C'#243'digo'
+        MaxLength = 60
+        ReadOnly = True
+        TabOrder = 8
+      end
+      object edt_descricao: TLabeledEdit
+        Left = 19
+        Top = 106
+        Width = 310
+        Height = 21
+        EditLabel.Width = 27
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Nome'
+        MaxLength = 60
         TabOrder = 9
       end
     end
@@ -183,7 +200,6 @@ inherited frmCadCliente: TfrmCadCliente
     end
   end
   inherited QryList: TZQuery
-    Connection = dtmConect.ConectDB
     SQL.Strings = (
       'select'
       'clienteid,'
