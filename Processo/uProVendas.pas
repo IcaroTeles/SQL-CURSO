@@ -75,6 +75,8 @@ implementation
 
 {$R *.dfm}
 
+uses uRelVenda;
+
 procedure Tfrmprovendas.btnadicionarClick(Sender: TObject);
 begin
   inherited;
@@ -288,9 +290,24 @@ begin
   oVenda.TotalVenda       :=edtvalorvenda.Value;
 
   if (EstadoDoCadastro=ecNovo) then
-  result:= ovenda.Inserir (dtmvendas.cdsitensvenda)
+  oVenda.VendaId:=ovenda.Inserir (dtmvendas.cdsitensvenda)
   else if (EstadoDoCadastro=ecAlterar) then
-     result:=ovenda.Atualizar(dtmvendas.cdsitensvenda);
+     ovenda.Atualizar(dtmvendas.cdsitensvenda);
+
+  frmRelVenda:=TfrmRelVenda.Create(self);
+  frmRelVenda.QryVendas.Close;
+  frmRelVenda.QryVendas.ParamByName('VendaId').AsInteger:= oVenda.VendaId;
+  frmRelVenda.QryVendas.Open;
+
+  frmRelVenda.QryVendaItens.Close;
+  frmRelVenda.QryVendaItens.ParamByName('VendaId').AsInteger:= oVenda.VendaId;
+  frmRelVenda.QryVendaItens.Open;
+
+
+  frmRelVenda.Relatorio.PreviewModal;
+  frmRelVenda.Release;
+
+  result:= true;
 end;
 
 function TfrmProVendas.TotalizarVenda:Double;

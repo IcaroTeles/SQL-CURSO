@@ -17,7 +17,15 @@ uses
   DTMvenda in 'DataModule\DTMvenda.pas' {dtmvendas: TDataModule},
   uProVendas in 'Processo\uProVendas.pas' {frmprovendas},
   cProVenda in 'Classes\cProVenda.pas',
-  cControleEstoque in 'Classes\cControleEstoque.pas';
+  cControleEstoque in 'Classes\cControleEstoque.pas',
+  uRelVenda in 'Relatório\uRelVenda.pas' {frmrelvenda},
+  uRelFichaClientes in 'Relatório\uRelFichaClientes.pas' {frmrelclientesficha},
+  uRelClientes in 'Relatório\uRelClientes.pas' {frmrelclientes},
+  uRelCategoria in 'Relatório\uRelCategoria.pas' {frmrelcategoria},
+  uRelProd in 'Relatório\uRelProd.pas' {frmrelproduto},
+  uSelecionarData in 'Relatório\uSelecionarData.pas' {frmselecionardata},
+  uRelProdCategoria in 'Relatório\uRelProdCategoria.pas' {frmrelprodutocategoria},
+  uRelVendaPorData in 'Relatório\uRelVendaPorData.pas' {frmrelvendapordata};
 
 {$R *.res}
 
@@ -25,7 +33,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TformMenu, formMenu);
-  Application.CreateForm(Tdtmvendas, dtmvendas);
-  Application.CreateForm(Tfrmprovendas, frmprovendas);
   Application.Run;
 end.

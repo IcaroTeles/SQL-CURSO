@@ -36,7 +36,7 @@ type
   public
     constructor Create(aConexao:TZConnection);
     destructor Destroy; override;
-    function Inserir (cds:Tclientdataset) :Boolean;
+    function Inserir (cds:Tclientdataset) :integer;
     function Atualizar (cds:Tclientdataset):Boolean;
     function Apagar:Boolean;
     function Selecionar(id:Integer; var cds:TClientDataSet):Boolean;
@@ -214,13 +214,12 @@ begin
   end;
 end;
 
-function TVenda.Inserir (cds:Tclientdataset): Boolean;
+function TVenda.Inserir (cds:Tclientdataset): integer;
 var Qry:TZQuery;
     IdVendaGerado:Integer;
 begin
     Qry:=TZQuery.Create(nil);
   try
-    Result:=true;
     ConectDB.StartTransaction;
     Qry.Connection:=ConectDB;
     //Faz a Inclusão no Banco de Dados
@@ -249,10 +248,10 @@ begin
       end;
       {$endRegion}
       ConectDB.Commit;
-
+      result:= IdVendaGerado;
     Except
       ConectDB.Rollback;
-      Result:=false;
+      Result:=-1;
     End;
 
   finally

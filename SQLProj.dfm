@@ -54,19 +54,34 @@ object formMenu: TformMenu
     object RELATRIO1: TMenuItem
       Caption = 'RELAT'#211'RIO'
       object CLIENTE1: TMenuItem
-        Caption = 'CLIENTE'
+        Caption = 'CLIENTES'
+        OnClick = CLIENTE1Click
+      end
+      object FICHACLIENTE1: TMenuItem
+        Caption = 'FICHA CLIENTE'
+        OnClick = FICHACLIENTE1Click
+      end
+      object CATEGORIA2: TMenuItem
+        Caption = 'CATEGORIA'
+        OnClick = CATEGORIA2Click
       end
       object CLIENTE2: TMenuItem
         Caption = '-'
       end
       object PRODUTO2: TMenuItem
         Caption = 'PRODUTO'
+        OnClick = PRODUTO2Click
+      end
+      object PRODUTOPORCATEGORIA1: TMenuItem
+        Caption = 'PRODUTO POR CATEGORIA'
+        OnClick = PRODUTOPORCATEGORIA1Click
       end
       object PRODUTO3: TMenuItem
         Caption = '-'
       end
       object VENDAPORDATA1: TMenuItem
         Caption = 'VENDA POR DATA'
+        OnClick = VENDAPORDATA1Click
       end
     end
   end

@@ -25,6 +25,9 @@ type
     PRODUTO2: TMenuItem;
     PRODUTO3: TMenuItem;
     VENDAPORDATA1: TMenuItem;
+    CATEGORIA2: TMenuItem;
+    FICHACLIENTE1: TMenuItem;
+    PRODUTOPORCATEGORIA1: TMenuItem;
     procedure menuFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -32,6 +35,12 @@ type
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure VENDA1Click(Sender: TObject);
+    procedure CATEGORIA2Click(Sender: TObject);
+    procedure CLIENTE1Click(Sender: TObject);
+    procedure FICHACLIENTE1Click(Sender: TObject);
+    procedure PRODUTO2Click(Sender: TObject);
+    procedure PRODUTOPORCATEGORIA1Click(Sender: TObject);
+    procedure VENDAPORDATA1Click(Sender: TObject);
   private
     { Private declarations }
     TeclaEnter: Tmrenter;
@@ -47,7 +56,29 @@ implementation
 
 {$R *.dfm}
 
-uses DTMConexão, CadCategorias;
+uses DTMConexão, CadCategorias, uRelCategoria, uRelClientes, uRelFichaClientes,
+  uRelProd, uRelProdCategoria, uSelecionarData, uRelVendaPorData;
+
+procedure TformMenu.CATEGORIA2Click(Sender: TObject);
+begin
+  frmrelcategoria:= Tfrmrelcategoria.create(self);
+  frmrelcategoria.relatorio.previewmodal;
+  frmrelcategoria.release;
+end;
+
+procedure TformMenu.CLIENTE1Click(Sender: TObject);
+begin
+  frmrelclientes:=Tfrmrelclientes.create(self);
+  frmrelclientes.Relatorio.PreviewModal;
+  frmrelclientes.Release;
+end;
+
+procedure TformMenu.FICHACLIENTE1Click(Sender: TObject);
+begin
+  frmrelclientesficha:= Tfrmrelclientesficha.create (self);
+  frmrelclientesficha.relatorio.previewmodal;
+  frmrelclientesficha.release;
+end;
 
 procedure TformMenu.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -135,11 +166,44 @@ begin
 end;
 
 
+procedure TformMenu.PRODUTO2Click(Sender: TObject);
+begin
+  frmrelproduto:=Tfrmrelproduto.create(self);
+  frmrelproduto.relatorio.previewmodal;
+  frmrelproduto.release;
+end;
+
+procedure TformMenu.PRODUTOPORCATEGORIA1Click(Sender: TObject);
+begin
+  frmrelprodutocategoria:= Tfrmrelprodutocategoria.create(self);
+  frmrelprodutocategoria.relatorio.previewmodal;
+  frmrelprodutocategoria.release;
+end;
+
 procedure TformMenu.VENDA1Click(Sender: TObject);
 begin
   frmprovendas:= Tfrmprovendas.create(self);
   frmprovendas.showModal;
   frmprovendas.release;
+end;
+
+procedure TformMenu.VENDAPORDATA1Click(Sender: TObject);
+begin
+  try
+    frmselecionardata:= Tfrmselecionardata.create(self);
+    frmselecionardata.showmodal;
+
+    frmRelVendaPorData:=TfrmRelVendaPorData.Create(self);
+    frmRelVendaPorData.QryVendas.Close;
+    frmRelVendaPorData.QryVendas.ParamByName('DataInicio').AsDate:=frmSelecionarData.EdtDataInicio.Date;
+    frmRelVendaPorData.QryVendas.ParamByName('DataFim').AsDate:=frmSelecionarData.EdtDataFinal.Date;
+    frmRelVendaPorData.QryVendas.Open;
+    frmRelVendaPorData.Relatorio.PreviewModal;
+  finally
+    frmselecionardata.release;
+  end;
+
+
 end;
 
 end.

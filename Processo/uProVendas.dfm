@@ -83,6 +83,7 @@ inherited frmprovendas: Tfrmprovendas
               item
                 Expanded = False
                 FieldName = 'valortotalproduto'
+                Width = 64
                 Visible = True
               end>
           end
