@@ -190,4 +190,20 @@ object dtmConect: TdtmConect
     Left = 88
     Top = 112
   end
+  object qryscriptusuarios: TZQuery
+    Connection = ConectDB
+    SQL.Strings = (
+      'if object_id ('#39'usuarios'#39') is null'
+      'begin'
+      'create table usuarios ('
+      'usuarioid int identity (1,1) not null,'
+      'nome varchar (50) null,'
+      'senha varchar (40) not null,'
+      'primary key (usuarioid)'
+      ')'
+      'end;')
+    Params = <>
+    Left = 56
+    Top = 168
+  end
 end

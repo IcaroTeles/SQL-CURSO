@@ -28,10 +28,6 @@ object frmatualizadb: Tfrmatualizadb
     Color = clBackground
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 160
-    ExplicitTop = 104
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Panel2: TPanel
       Left = 6
       Top = 6
@@ -42,8 +38,6 @@ object frmatualizadb: Tfrmatualizadb
       Enabled = False
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 12
-      ExplicitTop = -10
       object Label1: TLabel
         Left = 112
         Top = 24
@@ -104,6 +98,14 @@ object frmatualizadb: Tfrmatualizadb
         Height = 17
         Caption = 'Itens'
         TabOrder = 5
+      end
+      object chkusuarios: TCheckBox
+        Left = 112
+        Top = 198
+        Width = 193
+        Height = 17
+        Caption = 'Usu'#225'rios'
+        TabOrder = 6
       end
     end
   end

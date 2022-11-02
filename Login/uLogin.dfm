@@ -1,0 +1,61 @@
+object frmlogin: Tfrmlogin
+  Left = 0
+  Top = 0
+  BorderIcons = []
+  Caption = 'frmlogin'
+  ClientHeight = 201
+  ClientWidth = 221
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnCloseQuery = FormCloseQuery
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object edtusuario: TLabeledEdit
+    Left = 32
+    Top = 48
+    Width = 156
+    Height = 21
+    EditLabel.Width = 36
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Usu'#225'rio'
+    TabOrder = 0
+    Text = 'teste'
+  end
+  object edtsenha: TLabeledEdit
+    Left = 32
+    Top = 88
+    Width = 156
+    Height = 21
+    EditLabel.Width = 30
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Senha'
+    PasswordChar = '*'
+    TabOrder = 1
+    Text = '123456'
+  end
+  object btnacessar: TButton
+    Left = 32
+    Top = 144
+    Width = 75
+    Height = 25
+    Caption = 'Entrar'
+    TabOrder = 2
+    OnClick = btnacessarClick
+  end
+  object btnfechar: TButton
+    Left = 113
+    Top = 144
+    Width = 75
+    Height = 25
+    Caption = 'Cancelar'
+    TabOrder = 3
+    OnClick = btnfecharClick
+  end
+end

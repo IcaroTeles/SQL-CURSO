@@ -14,6 +14,7 @@ type
     qrycategoria: TZQuery;
     qryprodutos: TZQuery;
     qryitens: TZQuery;
+    qryscriptusuarios: TZQuery;
   private
     { Private declarations }
   public

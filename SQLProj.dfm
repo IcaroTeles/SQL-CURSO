@@ -2,8 +2,8 @@ object formMenu: TformMenu
   Left = 0
   Top = 0
   Caption = 'Menu Principal'
-  ClientHeight = 201
-  ClientWidth = 447
+  ClientHeight = 218
+  ClientWidth = 453
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,11 +14,22 @@ object formMenu: TformMenu
   OldCreateOrder = False
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
+  object stbprincipal: TStatusBar
+    Left = 0
+    Top = 199
+    Width = 453
+    Height = 19
+    Panels = <
+      item
+        Width = 150
+      end>
+  end
   object menuPrinc: TMainMenu
     Left = 400
-    Top = 160
+    Top = 96
     object CADASTRO1: TMenuItem
       Caption = 'CADASTRO'
       object N1: TMenuItem
@@ -37,6 +48,17 @@ object formMenu: TformMenu
         OnClick = N2Click
       end
       object FECHAR1: TMenuItem
+        Caption = '-'
+      end
+      object USURIO1: TMenuItem
+        Caption = 'USU'#193'RIO'
+        OnClick = USURIO1Click
+      end
+      object ALTERARSENHA1: TMenuItem
+        Caption = 'ALTERAR SENHA'
+        OnClick = ALTERARSENHA1Click
+      end
+      object N3: TMenuItem
         Caption = '-'
       end
       object menuFechar: TMenuItem

@@ -3,9 +3,12 @@ unit SQLProj;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils,
+   System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls,
-  uProVendas,Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Enter, CadCliente, CadProduto, ufrmatualizadb;
+  uProVendas,Vcl.Forms, Vcl.Dialogs, Vcl.Menus,
+   Enter, CadCliente, CadProduto, ufrmatualizadb, cUsuarioLogado,
+   cUsuario,Vcl.ComCtrls;
 
 type
   TformMenu = class(TForm)
@@ -28,6 +31,10 @@ type
     CATEGORIA2: TMenuItem;
     FICHACLIENTE1: TMenuItem;
     PRODUTOPORCATEGORIA1: TMenuItem;
+    USURIO1: TMenuItem;
+    N3: TMenuItem;
+    ALTERARSENHA1: TMenuItem;
+    stbprincipal: TStatusBar;
     procedure menuFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -41,6 +48,9 @@ type
     procedure PRODUTO2Click(Sender: TObject);
     procedure PRODUTOPORCATEGORIA1Click(Sender: TObject);
     procedure VENDAPORDATA1Click(Sender: TObject);
+    procedure USURIO1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure ALTERARSENHA1Click(Sender: TObject);
   private
     { Private declarations }
     TeclaEnter: Tmrenter;
@@ -51,13 +61,15 @@ type
 
 var
   formMenu: TformMenu;
+  oUsuarioLogado: TUsuarioLogado;
 
 implementation
 
 {$R *.dfm}
 
 uses DTMConexão, CadCategorias, uRelCategoria, uRelClientes, uRelFichaClientes,
-  uRelProd, uRelProdCategoria, uSelecionarData, uRelVendaPorData;
+  uRelProd, uRelProdCategoria, uSelecionarData, uRelVendaPorData, uCadUsuarios,
+  uLogin, uAlterarSenha;
 
 procedure TformMenu.CATEGORIA2Click(Sender: TObject);
 begin
@@ -108,6 +120,27 @@ begin
 end;
 
 
+procedure TformMenu.FormShow(Sender: TObject);
+begin
+  try
+    oUsuarioLogado := TUsuarioLogado.Create;
+
+    frmLogin:=TfrmLogin.Create(Self);
+    frmLogin.ShowModal;
+
+  finally
+    frmLogin.Release;
+     StbPrincipal.Panels[0].Text:='USUÁRIO: '+oUsuarioLogado.nome;
+  end;
+end;
+
+procedure TformMenu.ALTERARSENHA1Click(Sender: TObject);
+begin
+  frmalterarsenha:= Tfrmalterarsenha.Create (self);
+  frmalterarsenha.ShowModal;
+  frmalterarsenha.Release;
+end;
+
 procedure TformMenu.AtualizarBancoDeDados(aForm:Tfrmatualizadb);
 begin
 aform.chkconexao.checked := true;
@@ -121,22 +154,28 @@ sleep (200);
 dtmconect.qryclientes.execsql;
 aform.chkclientes.checked :=true;
 aform.refresh;
-sleep (200);
+sleep (100);
 
 dtmconect.qryprodutos.execsql;
 aform.chkprodutos.checked :=true;
 aform.refresh;
-sleep (200);
+sleep (100);
 
 dtmconect.qryvendas.execsql;
 aform.chkvendas.checked :=true;
 aform.refresh;
-sleep (200);
+sleep (100);
 
 dtmconect.qryitens.execsql;
 aform.chkitens.checked :=true;
 aform.refresh;
-sleep (200);
+sleep (100);
+
+dtmconect.qryscriptusuarios.execsql;
+aform.chkusuarios.checked :=true;
+aform.refresh;
+sleep (100);
+
 end;
 
 procedure TformMenu.menuFecharClick(Sender: TObject);
@@ -178,6 +217,13 @@ begin
   frmrelprodutocategoria:= Tfrmrelprodutocategoria.create(self);
   frmrelprodutocategoria.relatorio.previewmodal;
   frmrelprodutocategoria.release;
+end;
+
+procedure TformMenu.USURIO1Click(Sender: TObject);
+begin
+  frmcadusuario:= Tfrmcadusuario.create(self);
+  frmcadusuario.showModal;
+  frmcadusuario.release;
 end;
 
 procedure TformMenu.VENDA1Click(Sender: TObject);

@@ -142,6 +142,7 @@ inherited frmCadCliente: TfrmCadCliente
         OnKeyDown = edtdataKeyDown
       end
       object edt_codigo: TLabeledEdit
+        Tag = 1
         Left = 19
         Top = 48
         Width = 46
