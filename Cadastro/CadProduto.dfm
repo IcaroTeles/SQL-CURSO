@@ -77,6 +77,7 @@ inherited frmCadProduto: TfrmCadProduto
         EditLabel.Width = 33
         EditLabel.Height = 13
         EditLabel.Caption = 'C'#243'digo'
+        Enabled = False
         MaxLength = 60
         ReadOnly = True
         TabOrder = 4
@@ -131,6 +132,7 @@ inherited frmCadProduto: TfrmCadProduto
     end
   end
   inherited QryList: TZQuery
+    Connection = dtmConect.ConectDB
     SQL.Strings = (
       'select p.produtoid,'
       #9'   p.nome,'
@@ -180,7 +182,6 @@ inherited frmCadProduto: TfrmCadProduto
   end
   object qrycategoria: TZQuery
     Connection = dtmConect.ConectDB
-    Active = True
     SQL.Strings = (
       'select categoriaid, descricao from categorias')
     Params = <>

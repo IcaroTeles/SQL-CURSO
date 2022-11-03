@@ -63,9 +63,12 @@ begin
                  ' WHERE categoriaid=:categoriaid');
     qry.ParamByName('categoriaid').AsInteger:= f_categoriaid;
     try
+      ConectDB.StartTransaction;
       Qry.ExecSQL;
-    except
-      result:=false;
+      ConectDB.Commit;
+    Except
+      ConectDB.Rollback;
+      Result:=false;
     end;
   finally
     if Assigned (Qry) then
@@ -87,9 +90,12 @@ begin
     qry.ParamByName('descricao').AsString:= self.F_descricao;
     qry.ParamByName('categoriaid').AsInteger:= self.F_categoriaid;
     try
+      ConectDB.StartTransaction;
       Qry.ExecSQL;
-    except
-      result:=false;
+      ConectDB.Commit;
+    Except
+      ConectDB.Rollback;
+      Result:=false;
     end;
   finally
     if Assigned (Qry) then
@@ -108,9 +114,12 @@ begin
     Qry.SQL.Add('Insert into categorias (descricao) values (:descricao)');
     Qry.ParamByName('descricao').AsString:= self.f_descricao;
     try
-      Qry.ExecSQL
-    except
-      result:=false;
+       ConectDB.StartTransaction;
+      Qry.ExecSQL;
+      ConectDB.Commit;
+    Except
+      ConectDB.Rollback;
+      Result:=false;
     end;
   finally
     if Assigned (Qry) then

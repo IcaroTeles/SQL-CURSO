@@ -9,12 +9,6 @@ uses
 type
   TdtmConect = class(TDataModule)
     ConectDB: TZConnection;
-    qryclientes: TZQuery;
-    qryvendas: TZQuery;
-    qrycategoria: TZQuery;
-    qryprodutos: TZQuery;
-    qryitens: TZQuery;
-    qryscriptusuarios: TZQuery;
   private
     { Private declarations }
   public

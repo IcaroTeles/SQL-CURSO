@@ -85,8 +85,11 @@ begin
                 ' WHERE clienteId=:clienteId ');
     Qry.ParamByName('clienteId').AsInteger :=F_clienteId;
     Try
+       ConectDB.StartTransaction;
       Qry.ExecSQL;
+      ConectDB.Commit;
     Except
+      ConectDB.Rollback;
       Result:=false;
     End;
 
@@ -128,8 +131,11 @@ begin
 
 
     Try
+       ConectDB.StartTransaction;
       Qry.ExecSQL;
+      ConectDB.Commit;
     Except
+      ConectDB.Rollback;
       Result:=false;
     End;
 
@@ -177,8 +183,11 @@ begin
     Qry.ParamByName('dataNascimento').AsDateTime :=Self.F_dataNascimento;
 
     Try
+       ConectDB.StartTransaction;
       Qry.ExecSQL;
+      ConectDB.Commit;
     Except
+      ConectDB.Rollback;
       Result:=false;
     End;
 

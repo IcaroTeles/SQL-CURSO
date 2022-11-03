@@ -80,8 +80,11 @@ begin
                 ' WHERE usuarioId=:usuarioId ');
     Qry.ParamByName('usuarioId').AsInteger :=F_usuarioId;
     Try
+       ConectDB.StartTransaction;
       Qry.ExecSQL;
+      ConectDB.Commit;
     Except
+      ConectDB.Rollback;
       Result:=false;
     End;
 
@@ -108,8 +111,11 @@ begin
     Qry.ParamByName('senha').AsString            :=Self.F_Senha;
 
     Try
+       ConectDB.StartTransaction;
       Qry.ExecSQL;
+      ConectDB.Commit;
     Except
+      ConectDB.Rollback;
       Result:=false;
     End;
 
@@ -136,8 +142,11 @@ begin
     Qry.ParamByName('senha').AsString            :=Self.F_senha;
 
     Try
+       ConectDB.StartTransaction;
       Qry.ExecSQL;
+      ConectDB.Commit;
     Except
+      ConectDB.Rollback;
       Result:=false;
     End;
 
@@ -276,8 +285,11 @@ begin
     Qry.ParamByName('senha').AsString            :=Self.F_Senha;
 
     Try
+       ConectDB.StartTransaction;
       Qry.ExecSQL;
+      ConectDB.Commit;
     Except
+      ConectDB.Rollback;
       Result:=false;
     End;
 

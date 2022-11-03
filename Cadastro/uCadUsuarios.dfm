@@ -18,6 +18,7 @@ inherited frmcadusuario: Tfrmcadusuario
         EditLabel.Width = 33
         EditLabel.Height = 13
         EditLabel.Caption = 'C'#243'digo'
+        Enabled = False
         MaxLength = 60
         ReadOnly = True
         TabOrder = 0

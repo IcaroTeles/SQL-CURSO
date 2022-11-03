@@ -11,13 +11,6 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     Label1: TLabel;
-    chkconexao: TCheckBox;
-    chkcategoria: TCheckBox;
-    chkclientes: TCheckBox;
-    chkprodutos: TCheckBox;
-    chkvendas: TCheckBox;
-    chkitens: TCheckBox;
-    chkusuarios: TCheckBox;
   private
     { Private declarations }
   public

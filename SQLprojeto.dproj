@@ -182,7 +182,6 @@
             <Form>frmcadusuario</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Classes\cUsuario.pas"/>
         <DCCReference Include="Login\uLogin.pas">
             <Form>frmlogin</Form>
             <FormType>dfm</FormType>
@@ -192,6 +191,11 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Classes\cUsuarioLogado.pas"/>
+        <DCCReference Include="Classes\cAtualizacaoBancodeDados.pas"/>
+        <DCCReference Include="Classes\cAtualizacaoTabelaMSSQL.pas"/>
+        <DCCReference Include="Classes\cUsuario.pas"/>
+        <DCCReference Include="Classes\cAtualizacaoCampoMSSQL.pas"/>
+        <DCCReference Include="Classes\cArquivoIni.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

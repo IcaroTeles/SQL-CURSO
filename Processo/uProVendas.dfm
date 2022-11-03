@@ -1,4 +1,5 @@
 inherited frmprovendas: Tfrmprovendas
+  ActiveControl = nil
   Caption = 'Vendas'
   PixelsPerInch = 96
   TextHeight = 13
@@ -288,6 +289,7 @@ inherited frmprovendas: Tfrmprovendas
         EditLabel.Width = 33
         EditLabel.Height = 13
         EditLabel.Caption = 'C'#243'digo'
+        Enabled = False
         MaxLength = 60
         ReadOnly = True
         TabOrder = 4

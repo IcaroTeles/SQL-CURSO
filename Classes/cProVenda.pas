@@ -170,9 +170,12 @@ begin
     Qry.ParamByName('TotalProduto').AsFloat :=cds.FieldByName('valorTotalProduto').AsFloat;
 
     Try
+      ConectDB.StartTransaction;
       Qry.ExecSQL;
+      ConectDB.Commit;
       BaixarEstoque(cds.FieldByName('produtoId').AsInteger, cds.FieldByName('quantidade').AsFloat);
     Except
+      conectdb.Rollback;
       Result:=false;
     End;
 
@@ -326,9 +329,12 @@ begin
     Qry.ParamByName('Quantidade').AsFloat   := cds.FieldByName('quantidade').AsFloat;
     Qry.ParamByName('TotalProduto').AsFloat := cds.FieldByName('valorTotalProduto').AsFloat;
     try
+      ConectDB.StartTransaction;
       Qry.ExecSQL;
+      ConectDB.Commit;
       BaixarEstoque(cds.FieldByName('produtoId').AsInteger, cds.FieldByName('quantidade').AsFloat);
     Except
+      ConectDB.Rollback;
       Result:=false;
     End;
 

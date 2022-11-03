@@ -8,7 +8,7 @@ uses
   Vcl.Controls,
   uProVendas,Vcl.Forms, Vcl.Dialogs, Vcl.Menus,
    Enter, CadCliente, CadProduto, ufrmatualizadb, cUsuarioLogado,
-   cUsuario,Vcl.ComCtrls;
+   cUsuario,Vcl.ComCtrls, cAtualizacaoBancodeDados, cArquivoIni;
 
 type
   TformMenu = class(TForm)
@@ -100,25 +100,42 @@ end;
 
 procedure TformMenu.FormCreate(Sender: TObject);
 begin
+if not FileExists(TArquivoIni.ArquivoIni) then
+  begin
+    TArquivoIni.AtualizarIni('SERVER', 'TipoDataBase', 'MSSQL');
+    TArquivoIni.AtualizarIni('SERVER', 'HostName', '.\SQLEXPRESS');
+    TArquivoIni.AtualizarIni('SERVER', 'Port', '1433');
+    TArquivoIni.AtualizarIni('SERVER', 'Database', 'vendas');
+    MessageDlg('Arquivo '+ TArquivoIni.ArquivoIni +' Criado com sucesso' +#13+
+               'Configure o arquivo antes de inicializar aplicação',MtInformation,[mbok],0);
+
+    Application.Terminate;
+  end
+  else
+  begin
   frmatualizadb:= Tfrmatualizadb.create (self);
   frmatualizadb.show;
   frmatualizadb.refresh;
   dtmConect := TdtmConect.create(nil);
   with dtmConect.ConectDB do
-  begin
+    begin
     SQLHourGlass:= True;
-    Protocol:= 'mssql';
+    if TArquivoIni.LerIni('SERVER','TipoDataBase')='MSSQL' then
+         Protocol:='mssql';  //Protocolo do banco de dados
     LibraryLocation:= 'D:\Projetos\Cursos\SQL-CURSO\ntwdblib.dll';
-    HostName:= '.\SQLEXPRESS';
-    Port:= 1433;
-  end;
+    HostName:= TArquivoIni.LerIni('SERVER','HostName');
+    Port:= StrToInt(TArquivoIni.LerIni('SERVER','Port'));
+    Database:= TArquivoIni.LerIni('SERVER','DataBase');
+    Autocommit:= true;
+    Connected:= true;
+    end;
   AtualizarBancoDeDados(frmatualizadb);
   frmatualizadb.Free;
   TeclaEnter:= Tmrenter.create (self);
   teclaenter.FocusEnabled:= true;
   teclaenter.FocusColor:=clinfobk;
+  end;
 end;
-
 
 procedure TformMenu.FormShow(Sender: TObject);
 begin
@@ -142,40 +159,15 @@ begin
 end;
 
 procedure TformMenu.AtualizarBancoDeDados(aForm:Tfrmatualizadb);
+var oAtualizarMSSQL:TAtualizaBancoDadosMSSQL;
 begin
-aform.chkconexao.checked := true;
-aform.refresh;
-
-dtmconect.qrycategoria.execsql;
-aform.chkcategoria.checked :=true;
-aform.refresh;
-sleep (200);
-
-dtmconect.qryclientes.execsql;
-aform.chkclientes.checked :=true;
-aform.refresh;
-sleep (100);
-
-dtmconect.qryprodutos.execsql;
-aform.chkprodutos.checked :=true;
-aform.refresh;
-sleep (100);
-
-dtmconect.qryvendas.execsql;
-aform.chkvendas.checked :=true;
-aform.refresh;
-sleep (100);
-
-dtmconect.qryitens.execsql;
-aform.chkitens.checked :=true;
-aform.refresh;
-sleep (100);
-
-dtmconect.qryscriptusuarios.execsql;
-aform.chkusuarios.checked :=true;
-aform.refresh;
-sleep (100);
-
+  try
+    oAtualizarMSSQL:=TAtualizaBancoDadosMSSQL.Create(Dtmconect.ConectDB);
+    oAtualizarMSSQL.AtualizarBancoDeDadosMSSQL;
+  finally
+    if Assigned(oAtualizarMSSQL) then
+       FreeAndNil(oAtualizarMSSQL);
+  end;
 end;
 
 procedure TformMenu.menuFecharClick(Sender: TObject);

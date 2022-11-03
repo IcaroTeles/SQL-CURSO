@@ -28,10 +28,14 @@ uses
   uRelVendaPorData in 'Relatório\uRelVendaPorData.pas' {frmrelvendapordata},
   uFuncaoCriptografia in 'Heranca\uFuncaoCriptografia.pas',
   uCadUsuarios in 'Cadastro\uCadUsuarios.pas' {frmcadusuario},
-  cUsuario in 'Classes\cUsuario.pas',
   uLogin in 'Login\uLogin.pas' {frmlogin},
   uAlterarSenha in 'Login\uAlterarSenha.pas' {frmalterarsenha},
-  cUsuarioLogado in 'Classes\cUsuarioLogado.pas';
+  cUsuarioLogado in 'Classes\cUsuarioLogado.pas',
+  cAtualizacaoBancodeDados in 'Classes\cAtualizacaoBancodeDados.pas',
+  cAtualizacaoTabelaMSSQL in 'Classes\cAtualizacaoTabelaMSSQL.pas',
+  cUsuario in 'Classes\cUsuario.pas',
+  cAtualizacaoCampoMSSQL in 'Classes\cAtualizacaoCampoMSSQL.pas',
+  cArquivoIni in 'Classes\cArquivoIni.pas';
 
 {$R *.res}
 
