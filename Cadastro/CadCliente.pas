@@ -38,6 +38,8 @@ type
     QryListnome: TWideStringField;
     edt_codigo: TLabeledEdit;
     edt_descricao: TLabeledEdit;
+    edtracial: TLabeledEdit;
+    edtgenero: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnnovoClick(Sender: TObject);
     procedure btnMudarClick(Sender: TObject);
@@ -72,9 +74,12 @@ if oCliente.Selecionar(QryList.FieldByName('clienteId').AsInteger) then
      edtEndereco.Text :=oCliente.endereco;
      edtBairro.Text   :=oCliente.bairro;
      edtCidade.Text   :=oCliente.cidade;
+     edtestado.text   :=ocliente.estado;
      edtTelefone.Text :=oCliente.telefone;
      edtEmail.Text    :=oCliente.email;
      edtData.Date:=oCliente.dataNascimento;
+     edtracial.Text:= oCliente.racial;
+     edtgenero.Text:= ocliente.genero;
 
   end
   else begin
@@ -123,10 +128,13 @@ begin
   oCliente.cep            :=edtCEP.Text;
   oCliente.endereco       :=edtEndereco.Text;
   oCliente.bairro         :=edtBairro.Text;
+  ocliente.estado         :=edtestado.text;
   oCliente.cidade         :=edtCidade.Text;
   oCliente.telefone       :=edtTelefone.Text;
   oCliente.email          :=edtEmail.Text;
   oCliente.dataNascimento :=edtData.Date;
+  ocliente.racial         :=edtracial.Text;
+  ocliente.genero         :=edtgenero.Text;
 
   if (EstadoDoCadastro=ecNovo) then
      Result:=oCliente.Inserir

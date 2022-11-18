@@ -105,7 +105,7 @@ if not FileExists(TArquivoIni.ArquivoIni) then
     TArquivoIni.AtualizarIni('SERVER', 'TipoDataBase', 'MSSQL');
     TArquivoIni.AtualizarIni('SERVER', 'HostName', '.\SQLEXPRESS');
     TArquivoIni.AtualizarIni('SERVER', 'Port', '1433');
-    TArquivoIni.AtualizarIni('SERVER', 'Database', 'vendas');
+    TArquivoIni.AtualizarIni('SERVER', 'Database', 'Azax');
     MessageDlg('Arquivo '+ TArquivoIni.ArquivoIni +' Criado com sucesso' +#13+
                'Configure o arquivo antes de inicializar aplicação',MtInformation,[mbok],0);
 
@@ -122,7 +122,7 @@ if not FileExists(TArquivoIni.ArquivoIni) then
     SQLHourGlass:= True;
     if TArquivoIni.LerIni('SERVER','TipoDataBase')='MSSQL' then
          Protocol:='mssql';  //Protocolo do banco de dados
-    LibraryLocation:= 'D:\Projetos\Cursos\SQL-CURSO\ntwdblib.dll';
+    LibraryLocation:= 'C:\Azax\ntwdblib.dll';
     HostName:= TArquivoIni.LerIni('SERVER','HostName');
     Port:= StrToInt(TArquivoIni.LerIni('SERVER','Port'));
     Database:= TArquivoIni.LerIni('SERVER','DataBase');

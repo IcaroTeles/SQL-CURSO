@@ -26,7 +26,6 @@ object frmlogin: Tfrmlogin
     EditLabel.Height = 13
     EditLabel.Caption = 'Usu'#225'rio'
     TabOrder = 0
-    Text = 'teste'
   end
   object edtsenha: TLabeledEdit
     Left = 32
@@ -38,7 +37,6 @@ object frmlogin: Tfrmlogin
     EditLabel.Caption = 'Senha'
     PasswordChar = '*'
     TabOrder = 1
-    Text = '123456'
   end
   object btnacessar: TButton
     Left = 32

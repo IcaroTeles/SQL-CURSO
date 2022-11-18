@@ -19,8 +19,22 @@ inherited frmprovendas: Tfrmprovendas
         Height = 13
         Caption = 'Produto'
       end
+      object TLabel
+        Left = 559
+        Top = 6
+        Width = 48
+        Height = 13
+        Caption = 'Entregue:'
+      end
+      object TLabel
+        Left = 353
+        Top = 29
+        Width = 71
+        Height = 13
+        Caption = 'Data da Venda'
+      end
       object edtdatavenda: TDateEdit
-        Left = 347
+        Left = 353
         Top = 48
         Width = 121
         Height = 21
@@ -186,8 +200,8 @@ inherited frmprovendas: Tfrmprovendas
             OnEnter = edtvalortotalEnter
           end
           object btnadicionar: TBitBtn
-            Left = 541
-            Top = 14
+            Left = 557
+            Top = 16
             Width = 75
             Height = 23
             Caption = '&Adicionar'
@@ -222,8 +236,8 @@ inherited frmprovendas: Tfrmprovendas
             OnClick = btnadicionarClick
           end
           object btnremover: TBitBtn
-            Left = 622
-            Top = 17
+            Left = 658
+            Top = 16
             Width = 75
             Height = 23
             Caption = '&Remover'
@@ -294,15 +308,32 @@ inherited frmprovendas: Tfrmprovendas
         ReadOnly = True
         TabOrder = 4
       end
+      object edtpagamento: TLabeledEdit
+        Left = 560
+        Top = 49
+        Width = 174
+        Height = 21
+        EditLabel.Width = 102
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Forma de Pagamento'
+        MaxLength = 60
+        TabOrder = 5
+      end
+      object edtdataentrega: TDateEdit
+        Left = 613
+        Top = 3
+        Width = 121
+        Height = 21
+        ClickKey = 114
+        DialogTitle = 'Selecione a Data'
+        NumGlyphs = 2
+        CalendarStyle = csDialog
+        TabOrder = 6
+      end
     end
     inherited tabList: TTabSheet
       inherited GridList: TDBGrid
         Columns = <
-          item
-            Expanded = False
-            FieldName = 'vendaid'
-            Visible = True
-          end
           item
             Expanded = False
             FieldName = 'clienteid'
@@ -311,7 +342,7 @@ inherited frmprovendas: Tfrmprovendas
           item
             Expanded = False
             FieldName = 'nome'
-            Width = 291
+            Width = 162
             Visible = True
           end
           item
@@ -322,6 +353,20 @@ inherited frmprovendas: Tfrmprovendas
           item
             Expanded = False
             FieldName = 'totalvenda'
+            Width = 83
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'dataentrega'
+            Title.Caption = 'Entregue em'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'formapagamento'
+            Title.Caption = 'Forma de pagamento'
+            Width = 115
             Visible = True
           end>
       end
@@ -338,11 +383,13 @@ inherited frmprovendas: Tfrmprovendas
       #9'   vendas.clienteid,'
       #9'   clientes.nome,'
       #9'   vendas.datavenda,'
-      #9'   vendas.totalvenda'
+      #9'   vendas.totalvenda,'
+      '                   vendas.dataentrega,'
+      '                   vendas.formapagamento'
       'from vendas'
       'inner join clientes on clientes.clienteid = vendas.clienteid')
-    Left = 724
-    Top = 32
+    Left = 716
+    Top = 168
     object QryListvendaid: TIntegerField
       DisplayLabel = 'N'#250'mero Venda'
       FieldName = 'vendaid'
@@ -368,9 +415,16 @@ inherited frmprovendas: Tfrmprovendas
       FieldName = 'totalvenda'
       Required = True
     end
+    object QryListdataentrega: TDateTimeField
+      FieldName = 'dataentrega'
+    end
+    object QryListformapagamento: TWideStringField
+      FieldName = 'formapagamento'
+      Size = 60
+    end
   end
   inherited DataList: TDataSource
-    Left = 684
-    Top = 32
+    Left = 716
+    Top = 224
   end
 end

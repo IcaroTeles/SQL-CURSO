@@ -35,6 +35,10 @@ type
     btnremover: TBitBtn;
     edt_codigo: TLabeledEdit;
     dbgriditensvenda: TDBGrid;
+    edtpagamento: TLabeledEdit;
+    QryListdataentrega: TDateTimeField;
+    QryListformapagamento: TWideStringField;
+    edtdataentrega: TDateEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbgriditensvendaKeyDown(Sender: TObject; var Key: Word;
@@ -288,6 +292,8 @@ begin
   oVenda.ClienteId        :=lkpCliente.KeyValue;
   oVenda.DataVenda        :=edtDataVenda.Date;
   oVenda.TotalVenda       :=edtvalorvenda.Value;
+  oVenda.formapagamento   :=edtpagamento.text;
+  oVenda.dataentrega      :=edtdataentrega.date;
 
   if (EstadoDoCadastro=ecNovo) then
   oVenda.VendaId:=ovenda.Inserir (dtmvendas.cdsitensvenda)

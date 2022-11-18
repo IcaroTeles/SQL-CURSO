@@ -138,7 +138,9 @@ begin
       '		cep varchar(10) null, '+
       '		telefone varchar(14) null, '+
       '		email varchar(100) null,      '+
-      '		dataNascimento datetime null '+
+      '		dataNascimento datetime null, '+
+      '		genero varchar(60) NULL, ' +
+      '		racial varchar(60) NULL, ' +
       '		PRIMARY KEY (clienteId) '+
       '	) '
     );
@@ -176,6 +178,8 @@ begin
       '	  clienteId int not null, '+
       '	  dataVenda datetime default getdate(), '+
       '	  totalVenda decimal(18,5) default 0.00000, '+
+      '		formapagamento varchar(60) NULL, ' +
+      '		dataentrega datetime NULL, ' +
 
       '	  PRIMARY KEY (vendaId), '+
       '	  CONSTRAINT FK_VendasClientes FOREIGN KEY (clienteId) '+

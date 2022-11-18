@@ -26,6 +26,8 @@ type
     F_cep: String;
     F_telefone: string;
     F_email: string;
+    F_genero: string;
+    F_racial: string;
     F_dataNascimento: TDateTime;
 
   public
@@ -38,6 +40,8 @@ type
   published
     property codigo        :Integer    read F_clienteId      write F_clienteId;
     property nome          :string     read F_nome           write F_nome;
+    property genero        :string     read F_genero         write F_genero;
+    property racial        :string     read F_racial         write F_racial;
     property endereco      :string     read F_endereco       write F_endereco;
     property cidade        :string     read F_cidade         write F_cidade;
     property bairro        :string     read F_bairro         write F_bairro;
@@ -113,6 +117,8 @@ begin
                 '       ,cidade         =:cidade '+
                 '       ,bairro         =:bairro '+
                 '       ,estado         =:estado '+
+                '       ,racial         =:racial '+
+                '       ,genero         =:genero '+
                 '       ,cep            =:cep '+
                 '       ,telefone       =:telefone '+
                 '       ,email          =:email '+
@@ -124,6 +130,8 @@ begin
     Qry.ParamByName('cidade').AsString           :=Self.F_cidade;
     Qry.ParamByName('bairro').AsString           :=Self.F_bairro;
     Qry.ParamByName('estado').AsString           :=Self.F_estado;
+    Qry.ParamByName('racial').AsString           :=Self.F_racial;
+    Qry.ParamByName('genero').AsString           :=Self.F_genero;
     Qry.ParamByName('cep').AsString              :=Self.F_cep;
     Qry.ParamByName('telefone').AsString         :=Self.F_telefone;
     Qry.ParamByName('email').AsString            :=Self.F_email;
@@ -158,6 +166,8 @@ begin
                 '                      cidade,  '+
                 '                      bairro,  '+
                 '                      estado, '+
+                '                      racial, '+
+                '                      genero, '+
                 '                      cep, '+
                 '                      telefone, '+
                 '                      email, '+
@@ -167,6 +177,8 @@ begin
                 '                      :cidade,  '+
                 '                      :bairro,  '+
                 '                      :estado, '+
+                '                      :racial, '+
+                '                      :genero, '+
                 '                      :cep, '+
                 '                      :telefone, '+
                 '                      :email, '+
@@ -177,6 +189,8 @@ begin
     Qry.ParamByName('cidade').AsString           :=Self.F_cidade;
     Qry.ParamByName('bairro').AsString           :=Self.F_bairro;
     Qry.ParamByName('estado').AsString           :=Self.F_estado;
+    Qry.ParamByName('racial').AsString           :=Self.F_racial;
+    Qry.ParamByName('genero').AsString           :=Self.F_genero;
     Qry.ParamByName('cep').AsString              :=Self.F_cep;
     Qry.ParamByName('telefone').AsString         :=Self.F_telefone;
     Qry.ParamByName('email').AsString            :=Self.F_email;
@@ -211,6 +225,8 @@ begin
                 '       cidade, '+
                 '       bairro, '+
                 '       estado, '+
+                '       racial, '+
+                '       genero, '+
                 '       cep, '+
                 '       telefone, '+
                 '       email, '+
@@ -227,6 +243,8 @@ begin
       Self.F_cidade        := Qry.FieldByName('cidade').AsString;
       Self.F_bairro        := Qry.FieldByName('bairro').AsString;
       Self.F_estado        := Qry.FieldByName('estado').AsString;
+      Self.F_racial        := Qry.FieldByName('racial').AsString;
+      Self.F_genero        := Qry.FieldByName('genero').AsString;
       Self.F_cep           := Qry.FieldByName('cep').AsString;
       Self.F_telefone      := Qry.FieldByName('telefone').AsString;
       Self.F_email         := Qry.FieldByName('email').AsString;

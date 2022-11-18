@@ -10,11 +10,10 @@ object dtmConect: TdtmConect
       'controls_cp=CP_UTF16'
       'AutoEncodeStrings=True')
     TransactIsolationLevel = tiReadCommitted
-    Connected = True
     SQLHourGlass = True
     HostName = '.\SQLEXPRESS'
     Port = 1433
-    Database = 'vendas'
+    Database = 'Azax'
     User = ''
     Password = ''
     Protocol = 'mssql'
